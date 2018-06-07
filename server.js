@@ -1,41 +1,32 @@
-var cheerio = require("cheerio");
+var express = require("express");
+var mongoose = require("mongoose");
+var exphbs = require("express-handlebars");
+var bodyParser = require("body-parser");
 
-var request = require("request");
+var PORT = process.env.PORT || 3000;
 
-//telling the console what the app is doing
-console.log("\n***********************************\n" +
-            "Grabbing every article headline, summary, and link\n" +
-            "from the LA Times:" +
-            "\n***********************************\n");
+var app = express();
 
-//making a request from LA Times to scrape the necessary information from the site
+var routes = require("./routes");
 
-request ("http://www.latimes.com/local/lanow/#nt=taxonomy-article", function(err, response, html) {
-    
-    //loads the HTML and saves it into cheerio as a variable 
-    //'$' becomes the symbol for cheerio's shorthand commands  
-    var $ = cheerio.load(html);
+app.use(express.static("public"));
 
-    //saves the data that we scrape into an empty array 
-    var results = [];
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view-engine", "handlebars");
 
-    //with cheerio we are looking for p-tag elements with the "title" class
-    $("h5").each(function(i, element) {
+app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.json());
 
-        //saves the text of the element into a "title" variable 
-        var title = $(element).text();
+app.use(routes);
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 
-        //var summary = $(element).text()
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+    useMongoClient: true
+});
 
-        //in the selected element we are looking for children attributes such as a-tags and storing them in the "link" variable
-        var link = $(element).children().attr("href");
-
-        results.push({
-            title: title,
-            link: link
-        });
-    });
-
-    console.log(results);
+app.listen(PORT, function() {
+    console.log("Listening on port: " + PORT);
 });
