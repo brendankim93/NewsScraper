@@ -14,11 +14,12 @@ html {
     width: 100%;
     height: 80px;
     color: white;
-    background-color: #2196f3;
+    background-color:#264d00;
   }
   
   .navbar {
     margin-bottom: 0;
+    background: #408000;
   }
   
   .jumbotron {
@@ -43,7 +44,7 @@ html {
   
   .jumbotron .background-image {
     height: 100%;
-    background-image: url("../images/newspaper.jpg");
+    background-image: url("../images/computer-drink-iphone-586339.jpg");
     background-size: cover;
   }
   
@@ -74,7 +75,7 @@ html {
   }
   
   .panel.panel-default .panel-heading {
-    background-color: #2196f3;
+    background-color: #2b882b;
     position: relative;
   }
   
@@ -94,6 +95,7 @@ html {
   
   .panel.panel-default .panel-body {
     font-size: 16px;
+    color: black;
   }
   
   .panel.panel-default .panel-heading .article-link {
@@ -112,7 +114,7 @@ html {
     padding-left: 10px;
     margin: 0;
     font-weight: 800;
-    background: #0c7cd5;
+    background:#408000;
   }
   
   .navbar-nav > li > a.scrape-new {
@@ -157,3 +159,6 @@ html {
     bottom: 10px;
   }
   
+  .btn-success {
+    background: #2196f3;
+  }
