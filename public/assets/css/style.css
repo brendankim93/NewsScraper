@@ -19,7 +19,7 @@ html {
   
   .navbar {
     margin-bottom: 0;
-    background: #408000;
+    background: #264d00;
   }
   
   .jumbotron {
@@ -75,7 +75,7 @@ html {
   }
   
   .panel.panel-default .panel-heading {
-    background-color: #2b882b;
+    background-color: #408000;
     position: relative;
   }
   
@@ -161,4 +161,8 @@ html {
   
   .btn-success {
     background: #2196f3;
+  }
+
+  .btn-info {
+    background: #cca300;
   }
