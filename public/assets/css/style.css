@@ -90,7 +90,8 @@ html {
   }
   
   .panel.panel-default .panel-heading .btn.delete {
-    right: 160px;
+    right: 30px;
+    margin-top: 10px;
   }
   
   .panel.panel-default .panel-body {
